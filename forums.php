@@ -1,7 +1,11 @@
 <?php
     require('db.php');
-    $topicQuery="SELECT * FROM topics";
-    $runTQ=mysqli_query($db,$topicQuery);
+    $descriptionQuery="SELECT * FROM descriptions WHERE author='Principal' ORDER BY id DESC";
+    $descriptionQuery1="SELECT * FROM descriptions WHERE author='Office' ORDER BY id DESC";
+    $descriptionQuery2="SELECT * FROM descriptions WHERE author!='Office' AND author!='Principal' ORDER BY id DESC";
+    $runDQ=mysqli_query($db,$descriptionQuery);
+    $runDQ1=mysqli_query($db,$descriptionQuery1);
+    $runDQ2=mysqli_query($db,$descriptionQuery2);
     
 ?>
 <!DOCTYPE html>
@@ -49,27 +53,25 @@
     <div class="container">
         <div class="subforum">
             <div class="subforum-title">
-                <h1>General Information</h1>
+                <h1>General Information By Authority</h1>
             </div>
             <?php
-            while($post=mysqli_fetch_assoc($runTQ)){
+                while($post=mysqli_fetch_assoc($runDQ)){
                 ?>
                 <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
+                    <div class="subforum-icon subforum-column center">
+                        <i class="fa fa-user-check center"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="#"><?=$post['description_title']?></a></h4>
+                        <p><?=$post['description_content']?></p>
+                    </div>
+                    
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a> 
+                        <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
+                    </div>
                 </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let us try to be cool, otherwise,w at the point in libing together with people youdon live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href=""><?=$post['author']?></a> 
-                    <br>on <small><?=date('F jS, Y',strtotime($post['craeted_at']))?></small>
-                </div>
-            </div>
             <?php
             }
             ?>
@@ -79,167 +81,54 @@
         
         <div class="subforum">
             <div class="subforum-title">
-                <h1>General Information</h1>
+                <h1>General Information By Office</h1>
             </div>
+            <?php
+             while($post=mysqli_fetch_assoc($runDQ1)){
+            ?>
             <div class="subforum-row">
                 <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
+                    <i class="fa fa-desktop center"></i>
                 </div>
                 <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
+                    <h4><a href="#"><?=$post['description_title']?></a></h4>
+                    <p><?=$post['description_content']?></p>
                 </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
+                
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>6 Feb 2023</small>
+                <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a>
+                    <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                 </div>
             </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>7 feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>8 Feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>9 Feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>10 Feb 2023</small>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
         
         <div class="subforum">
             <div class="subforum-title">
                 <h1>General Information</h1>
             </div>
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
+                <?php
+                while($post=mysqli_fetch_assoc($runDQ2)){
+                    ?>
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column center">
+                        <i class="fa fa-school-circle-exclamation center"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="#"><?=$post['description_title']?></a></h4>
+                        <p><?=$post['description_content']?></p>
+                    </div>
+                    
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a>
+                        <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
+                    </div>
                 </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>11 Feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>13 Feb 2023</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>14 Feb 2023</small>
-                </div>
-            </div>
-
-           
+                <?php
+                }
+                ?>
         </div>
         <!---->
     </div>

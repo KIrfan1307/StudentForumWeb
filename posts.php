@@ -1,3 +1,9 @@
+<?php
+    require('db.php');
+    $forumQuery="SELECT * FROM forum";
+    $runFQ=mysqli_query($db,$forumQuery);
+    $statusArray=array('LET'=>"fa fa-book",'PT'=>"fa fa-fire",'HET'=>"fa fa-rocket",'CT'=>"fa fa-lock");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,15 +60,18 @@
                 <div class="replies">Replies/Views</div>
                 <div class="last-reply">Last Reply</div>
             </div>
+            <?php
+            while($post=mysqli_fetch_assoc($runFQ)){
+                ?>
             <div class="table-row">
-                <div class="status"><i class="fa fa-fire"></i></div>
+                <div class="status"><i class='<?=$statusArray[$post['status']]?>'></i></div>
                 <div class="subjects">
-                    <a href="">Is learning Python on 2023 worth it?</a>
+                    <a href=""><?=$post['forum_content']?></a>
                     <br>
-                    <span>Started by <b><a href="">User</a></b> .</span>
+                    <span>Started by <b><a href=""><?=$post['author']?></a></b> on <?=$post['created_at']?></span>
                 </div>
                 <div class="replies">
-                    2 replies <br> 125 views
+                    2 replies
                 </div>
 
                 <div class="last-reply">
@@ -70,151 +79,7 @@
                     <br>By <b><a href="">User</a></b>
                 </div>
             </div>
-            <div class="table-row">
-                <div class="status"><i class="fa fa-frown-o"></i></div>
-                <div class="subjects">
-                    <a href="">Is learning Python on 2023 worth it?</a>
-                    <br>
-                    <span>Started by <b><a href="">User</a></b> .</span>
-                </div>
-                <div class="replies">
-                    2 replies <br> 125 views
-                </div>
-
-                <div class="last-reply">
-                    Feb 2 2023
-                    <br>By <b><a href="">User</a></b>
-                </div>
-                </div>
-                <div class="table-row">
-                    <div class="status"><i class="fa fa-rocket"></i></div>
-                    <div class="subjects">
-                        <a href="">Is learning Python on 2023 worth it?</a>
-                        <br>
-                        <span>Started by <b><a href="">User</a></b> .</span>
-                    </div>
-                    <div class="replies">
-                        2 replies <br> 125 views
-                    </div>
-    
-                    <div class="last-reply">
-                        Feb 2 2023
-                        <br>By <b><a href="">User</a></b>
-                    </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="status"><i class="fa fa-book"></i></div>
-                        <div class="subjects">
-                            <a href="">Is learning Python on 2023 worth it?</a>
-                            <br>
-                            <span>Started by <b><a href="">User</a></b> .</span>
-                        </div>
-                        <div class="replies">
-                            2 replies <br> 125 views
-                        </div>
-        
-                        <div class="last-reply">
-                            Feb 2 2023
-                            <br>By <b><a href="">User</a></b>
-                        </div>
-                        </div>
-                        <div class="table-row">
-                            <div class="status"><i class="fa fa-lock"></i></div>
-                            <div class="subjects">
-                                <a href="">Is learning Python on 2023 worth it?</a>
-                                <br>
-                                <span>Started by <b><a href="">User</a></b> .</span>
-                            </div>
-                            <div class="replies">
-                                2 replies <br> 125 views
-                            </div>
-            
-                            <div class="last-reply">
-                                Feb 2 2023
-                                <br>By <b><a href="">User</a></b>
-                            </div>
-                            </div>
-                            <div class="table-row">
-                                <div class="status"><i class="fa fa-fire"></i></div>
-                                <div class="subjects">
-                                    <a href="">Is learning Python on 2023 worth it?</a>
-                                    <br>
-                                    <span>Started by <b><a href="">User</a></b> .</span>
-                                </div>
-                                <div class="replies">
-                                    2 replies <br> 125 views
-                                </div>
-                
-                                <div class="last-reply">
-                                    Feb 2 2023
-                                    <br>By <b><a href="">User</a></b>
-                                </div>
-                                </div>
-                                <div class="table-row">
-                                    <div class="status"><i class="fa fa-fire"></i></div>
-                                    <div class="subjects">
-                                        <a href="">Is learning Python on 2023 worth it?</a>
-                                        <br>
-                                        <span>Started by <b><a href="">User</a></b> .</span>
-                                    </div>
-                                    <div class="replies">
-                                        2 replies <br> 125 views
-                                    </div>
-                    
-                                    <div class="last-reply">
-                                        Feb 2 2023
-                                        <br>By <b><a href="">User</a></b>
-                                    </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="status"><i class="fa fa-fire"></i></div>
-                                        <div class="subjects">
-                                            <a href="">Is learning Python on 2023 worth it?</a>
-                                            <br>
-                                            <span>Started by <b><a href="">User</a></b> .</span>
-                                        </div>
-                                        <div class="replies">
-                                            2 replies <br> 125 views
-                                        </div>
-                        
-                                        <div class="last-reply">
-                                            Feb 2 2023
-                                            <br>By <b><a href="">User</a></b>
-                                        </div>
-                                        </div>
-                                        <div class="table-row">
-                                            <div class="status"><i class="fa fa-fire"></i></div>
-                                            <div class="subjects">
-                                                <a href="">Is learning Python on 2023 worth it?</a>
-                                                <br>
-                                                <span>Started by <b><a href="">User</a></b> .</span>
-                                            </div>
-                                            <div class="replies">
-                                                2 replies <br> 125 views
-                                            </div>
-                            
-                                            <div class="last-reply">
-                                                Feb 2 2023
-                                                <br>By <b><a href="">User</a></b>
-                                            </div>
-                                            </div>
-                                            <div class="table-row">
-                                                <div class="status"><i class="fa fa-fire"></i></div>
-                                                <div class="subjects">
-                                                    <a href="">Is learning Python on 2023 worth it?</a>
-                                                    <br>
-                                                    <span>Started by <b><a href="">User</a></b> .</span>
-                                                </div>
-                                                <div class="replies">
-                                                    2 replies <br> 125 views
-                                                </div>
-                                
-                                                <div class="last-reply">
-                                                    Feb 2 2023
-                                                    <br>By <b><a href="">User</a></b>
-                                                </div>
-                                          </div>
-        
+            <?php } ?>
         <!--Pagination-->
                 <div class="pagination">
                     pages: <a href="#">1</a><a href="#">2</a><a href="#">3</a>
@@ -224,9 +89,6 @@
                 <!--Status Note-->
 
                 <div class="note">
-                    <span>
-                        <i class="fa fa-frown-o"></i>&nbsp; 0 Engagement Topic <br>
-                    </span>
                     <span>
                         <i class="fa fa-book"></i>&nbsp; Low Engagement Topic <br>
                     </span>
@@ -239,10 +101,7 @@
                     <span>
                         <i class="fa fa-lock"></i>&nbsp; Closed Topic <br>
                     </span>
-
-
                 </div>
-
         <footer>
             <span>&copy; &nbsp;Irfan Kazi | All rights Reserved.</span>
         </footer>

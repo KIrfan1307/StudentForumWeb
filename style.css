@@ -45,7 +45,7 @@ h1{
 
 .subforum-row{
     display: grid;
-    grid-template-columns: 7% 60% 13% 20%;
+    grid-template-columns: 7% 70% 23%;
 }
 
 .subforum-column{
@@ -68,11 +68,6 @@ h1{
 .subforum-icon i{
     font-size: 45px;
 }
-
-.subforum-devider{
-    display: none;   
-}
-
 
 /* For the smartphones */
 @media screen and (max-width: 460px) {
@@ -143,7 +138,7 @@ header{
     margin-right:10px;
 }
 
-.close-icon i{
+.close-icon {
     font-size:60px;
     float: left;
     cursor: pointer;

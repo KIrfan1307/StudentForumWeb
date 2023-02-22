@@ -67,7 +67,7 @@
                     <br><br>
                     Nothing more and nothing less.
                     <br>
-                    <hr>
+
                     Regards username
                     <br>
                     <div class="comment">
