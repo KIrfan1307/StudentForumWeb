@@ -1,3 +1,12 @@
+<?php
+require('db.php');
+
+// printf($db);
+$userstmt="SELECT * FROM user";
+
+$noofdescriptionsstmt="";
+$runUS=mysqli_query($db,$userstmt);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,40 +49,36 @@
             </div>
         </div>
     <div class="container">
-        <!--Navigation-->
-        <div class="navigate">
-            <span><a href="">StudentForum - Forums</a> >> <a href="">random subforum</a> >> <a href="">random topic</a></span>
-        </div>
-
         <!--Topic Section-->
         <div class="topic-container">
             <!--Original thread-->
             <div class="head">
                 <div class="authors">Author</div>
-                <div class="content">Topic: random topic (Read 1325 Times)</div>
             </div>
 
-            <div class="body">
+            <div class="body-a">
+            <?php while($post=mysqli_fetch_assoc($runUS)) 
+                    { 
+                        $author=$post['id'];
+                        $noofdescriptionsstmt="SELECT count(*) FROM descriptions WHERE author=".$author;
+                        $runN=mysqli_query($db,$noofdescriptionsstmt);
+                        $post1=mysqli_fetch_assoc($runN);
+                    ?>
                 <div class="authors">
-                    <div class="username"><a href="">Username</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>45</u></div>
-                    <div>Points: <u>4586</u></div>
+                    
+                        <div class="username"><a href=""><?=$post['username']?></a></div>
+                        <div><?=$post['usertype']?></div>
+                        <div>Posts: <u><?=$post1['count(*)']?></u></div>
+                        <div>Points: <u>4586</u></div>
                 </div>
                 <div class="content">
-                    Just a random content of a random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
+                    <?=$post['user_details']?>
                     <br>
-
-                    Regards username
-                    <br>
-                    <div class="comment">
-                        <button onclick="showComment()">Comment</button>
-                    </div>
                 </div>
+                  <hr> 
+                <?php 
+                    }
+                    ?>
             </div>
         </div>
 
@@ -82,68 +87,10 @@
             <textarea name="comment" id="" placeholder="comment here ... "></textarea>
             <input type="submit" value="submit">
         </div>
-
-        <!--Comments Section-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
         <div class="comment-area hide" id="reply-area">
             <textarea name="reply" id="" placeholder="reply here ... "></textarea>
             <input type="submit" value="submit">
         </div>
-
-
-        <!--Another Comment With replies-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
-        <div class="comment-area hide" id="reply-area">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
-        
-
     </div>
     <footer>
         <span>&copy;  Irfan Kazi | All Rights Reserved</span>
