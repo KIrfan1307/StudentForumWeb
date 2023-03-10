@@ -49,9 +49,6 @@
     <div class="container">
 
         <!--Navigation-->
-        <div class="navigate">
-            <span><a href="">StudentForum - Forums</a> >> <a href="">Random Topic</a></span>
-        </div>
         <!--Display posts table-->
         <div class="posts-table">
             <div class="table-head">

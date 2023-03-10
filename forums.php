@@ -1,11 +1,26 @@
 <?php
     require('db.php');
-    $descriptionQuery="SELECT * FROM descriptions WHERE author='Principal' ORDER BY id DESC";
-    $descriptionQuery1="SELECT * FROM descriptions WHERE author='Office' ORDER BY id DESC";
-    $descriptionQuery2="SELECT * FROM descriptions WHERE author!='Office' AND author!='Principal' ORDER BY id DESC";
+    $desQuery="SELECT Count(*) FROM descriptions";
+    $totalPosts="SELECT totalposts FROM user";
+    $var=0;
+    $descriptionQuery="SELECT * FROM descriptions WHERE author=1 ORDER BY id DESC";
+    $descriptionQuery1="SELECT * FROM descriptions WHERE author=6 ORDER BY id DESC";
+    $descriptionQuery2="SELECT * FROM descriptions WHERE author!=6 AND author!=1 ORDER BY id DESC";
+    $postBystmt="";
+    $lastPostByAuthor=0;
+    $runcountquery=mysqli_query($db,$desQuery);
+    $postCount=mysqli_fetch_assoc($runcountquery);
     $runDQ=mysqli_query($db,$descriptionQuery);
     $runDQ1=mysqli_query($db,$descriptionQuery1);
     $runDQ2=mysqli_query($db,$descriptionQuery2);
+    $runTP=mysqli_query($db,$totalPosts);
+    $tmp=0;
+    while($postTP=mysqli_fetch_assoc($runTP)){
+        $tmp=$postTP['totalposts'];
+        if($tmp>0){
+            $var++;
+        }
+    }
     
 ?>
 <!DOCTYPE html>
@@ -57,6 +72,10 @@
             </div>
             <?php
                 while($post=mysqli_fetch_assoc($runDQ)){
+                    $lastPostByAuthor=$post['author'];
+                    $postBystmt="SELECT username FROM user WHERE id=".$lastPostByAuthor;
+                    $runls=mysqli_query($db,$postBystmt);
+                    $post3=mysqli_fetch_assoc($runls);
                 ?>
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column center">
@@ -68,7 +87,7 @@
                     </div>
                     
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a> 
+                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a> 
                         <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                     </div>
                 </div>
@@ -85,6 +104,10 @@
             </div>
             <?php
              while($post=mysqli_fetch_assoc($runDQ1)){
+                $lastPostByAuthor=$post['author'];
+                $postBystmt="SELECT username FROM user WHERE id=".$lastPostByAuthor;
+                $runls=mysqli_query($db,$postBystmt);
+                $post3=mysqli_fetch_assoc($runls);
             ?>
             <div class="subforum-row">
                 <div class="subforum-icon subforum-column center">
@@ -96,7 +119,7 @@
                 </div>
                 
                 <div class="subforum-info subforum-column">
-                <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a>
+                <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a>
                     <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                 </div>
             </div>
@@ -111,6 +134,10 @@
             </div>
                 <?php
                 while($post=mysqli_fetch_assoc($runDQ2)){
+                    $lastPostByAuthor=$post['author'];
+                    $postBystmt="SELECT username FROM user WHERE id=".$lastPostByAuthor;
+                    $runls=mysqli_query($db,$postBystmt);
+                    $post3=mysqli_fetch_assoc($runls);
                     ?>
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column center">
@@ -122,7 +149,7 @@
                     </div>
                     
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post['author']?></a>
+                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a>
                         <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                     </div>
                 </div>
@@ -138,7 +165,7 @@
         <div class="chart">
             StudentForum - Stats &nbsp;<i class="fa fa-bar-chart"></i>
         </div>
-        <span><u>5,369</u> Posts in <u>48</u> Topics by <u>8,124</u> Members.</span><br>
+        <span><u><?=$postCount['Count(*)']?></u> Posts by <u><?=$var?></u> Members.</span><br>
         <span>Latest post: <b><a href="">Random post</a></b> on Dec 15 2021 By <a href="">RandomUser</a></span>.<br>
         <span>Check <a href="">the latest posts</a> .</span><br>
     </div>
