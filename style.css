@@ -327,9 +327,9 @@ footer{
     flex: 70%;
 }
 
-.table-row .replies{
+/* .table-row .replies{
     flex: 10%;
-}
+} */
 
 .table-row .last-reply{
     flex: 15%;
@@ -368,8 +368,23 @@ footer{
 .pagination a:hover{
     opacity: 0.5;
 }
+.chat-box{
+    border: solid 1px #52057b;
+    margin-top: 20px;
+    padding: 40px;
+    display:flex;
+    justify-content: center;
+    box-shadow:1px 2px 3px #52057b;
+    min-width: 300px;
+    margin-top: 5px;
+}
 
-
+.chat-box input{
+    padding: 10px;
+}
+.chat-box select{
+    padding: 10px;
+}
 
 .note{
     background-color:#111314;

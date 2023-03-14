@@ -2,7 +2,6 @@
     require('db.php');
     $forumQuery="SELECT * FROM forum";
     $runFQ=mysqli_query($db,$forumQuery);
-    $statusArray=array('LET'=>"fa fa-book",'PT'=>"fa fa-fire",'HET'=>"fa fa-rocket",'CT'=>"fa fa-lock");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,33 +49,31 @@
 
         <!--Navigation-->
         <!--Display posts table-->
-        <div class="posts-table">
+        <div class="posts-table" scrollable="true">
             <div class="table-head">
-                <div class="status">Status</div>
-                <div class="subjects">Subjects</div>
-                <div class="replies">Replies/Views</div>
-                <div class="last-reply">Last Reply</div>
+                
+                <div class="subjects">Messages</div>
+                <div class="last-reply">Message by</div>
             </div>
             <?php
             while($post=mysqli_fetch_assoc($runFQ)){
                 ?>
             <div class="table-row">
-                <div class="status"><i class='<?=$statusArray[$post['status']]?>'></i></div>
                 <div class="subjects">
                     <a href=""><?=$post['forum_content']?></a>
                     <br>
-                    <span>Started by <b><a href=""><?=$post['author']?></a></b> on <?=$post['created_at']?></span>
                 </div>
-                <div class="replies">
-                    2 replies
-                </div>
-
                 <div class="last-reply">
-                    Feb 2 2023
-                    <br>By <b><a href="">User</a></b>
+                <?=$post['created_at']?>
+                    <br>By <b><a href=""><?=$post['author']?></a></b>
                 </div>
             </div>
             <?php } ?>
+            <div class="chat-box mb-3">
+                <input type="text" class="" placeholder="add your message">
+                <button class="" type="button" id="button-addon2">Button</button>
+            </div>
+
         <!--Pagination-->
                 <div class="pagination">
                     pages: <a href="#">1</a><a href="#">2</a><a href="#">3</a>
@@ -84,21 +81,6 @@
                 </div>
 
                 <!--Status Note-->
-
-                <div class="note">
-                    <span>
-                        <i class="fa fa-book"></i>&nbsp; Low Engagement Topic <br>
-                    </span>
-                    <span>
-                        <i class="fa fa-fire"></i>&nbsp; Popular Topic <br>
-                    </span>
-                    <span>
-                        <i class="fa fa-rocket"></i>&nbsp; high Engagement Topic <br>
-                    </span>
-                    <span>
-                        <i class="fa fa-lock"></i>&nbsp; Closed Topic <br>
-                    </span>
-                </div>
         <footer>
             <span>&copy; &nbsp;Irfan Kazi | All rights Reserved.</span>
         </footer>
