@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['username']))
+    {
+        header("location: Dashboard.php");
+        exit;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,7 +44,7 @@
 
     <div class="container my-4">
      <h1 class="text-center">Signup to the forum</h1>
-     <form action="registeraction.php" method="post">
+     <form action="registeraction.php" method="post" id="register" name="register">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
@@ -48,9 +56,9 @@
             <select name="usertype" id="usertype"  class="form-control">
                 <option value="">--select--</option>
                 <option value="Principal">Principal</option>
-                <option value="faculty">Faculty</option>
-                <option value="office">Office</option>
-                <option value="student">Student</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Office">Office</option>
+                <option value="Student">Student</option>
             </select>
         </div>
         <div class="form-group">
@@ -68,6 +76,7 @@
             <textarea class="form-control" id="userdetails" name="userdetails"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">SignUp</button>
+        
      </form>
     </div>
 

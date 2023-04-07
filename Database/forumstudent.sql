@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 07:31 PM
+-- Generation Time: Apr 07, 2023 at 04:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `forumstudent`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `author` text NOT NULL,
-  `relatedtopost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `content`, `author`, `relatedtopost`) VALUES
-(1, 'Yes, Python is very popular language in data science. You can make your career in python at current time.', 'Ismail Hannure', 1);
 
 -- --------------------------------------------------------
 
@@ -76,19 +56,19 @@ INSERT INTO `descriptions` (`id`, `description_title`, `description_content`, `a
 CREATE TABLE `forum` (
   `id` int(11) NOT NULL,
   `forum_content` text NOT NULL,
-  `number_of_replies` int(11) NOT NULL DEFAULT 0,
   `author` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` varchar(3) NOT NULL DEFAULT 'LET'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `forum`
 --
 
-INSERT INTO `forum` (`id`, `forum_content`, `number_of_replies`, `author`, `created_at`, `status`) VALUES
-(1, 'Is learning Python on 2023 worth it?', 0, 'Yash Gaikwad', '2023-03-08 18:30:47', 'HET'),
-(2, 'Is there any must learn course for Computer Science students?', 0, 'Aniket Gurav', '2023-02-22 12:36:10', 'LET');
+INSERT INTO `forum` (`id`, `forum_content`, `author`, `created_at`) VALUES
+(1, 'Is learning Python on 2023 worth it?', 'YashGaikwad', '2023-04-06 09:33:24'),
+(2, 'Yes, python is getting too much highlight, and popularity since last few years because of its programmer friendly behavior.\r\nYou can make your career in python.\r\nData science is effective field of python\'s demand.', 'IsmailHannure', '2023-04-06 09:33:29'),
+(3, 'Is there any must learn course for Computer Science students?', 'AniketGurav', '2023-04-06 09:33:34'),
+(4, 'It is up to your choice.\r\nBrowse related courses you want to make career in.', 'AartiDeshmukh', '2023-04-06 09:33:38');
 
 -- --------------------------------------------------------
 
@@ -102,30 +82,31 @@ CREATE TABLE `user` (
   `usertype` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_details` text NOT NULL DEFAULT 'General User',
-  `totalposts` int(11) NOT NULL DEFAULT 0
+  `totalposts` int(11) NOT NULL DEFAULT 0,
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `usertype`, `created_at`, `user_details`, `totalposts`) VALUES
-(1, 'Dr. Arshad Rizvi', 'Principal', '2023-03-08 17:48:13', 'Principal, Bill Gates Institute of Computer Science and Management, Dharashiv', 2),
-(2, 'D.N.Jamale', 'Faculty', '2023-03-08 17:48:18', 'Senior Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 1),
-(3, 'Ismail Hannure', 'Faculty', '2023-03-08 17:48:26', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 1),
-(4, 'Aarti Deshmukh', 'Faculty', '2023-03-08 14:32:11', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0),
-(5, 'Shruti Madake', 'Faculty', '2023-03-08 15:05:41', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0),
-(6, 'Office', 'Office', '2023-03-08 17:48:41', 'Official account of Office, Bill Gates Institute of Computer Science and Management.', 1);
+INSERT INTO `user` (`id`, `username`, `usertype`, `created_at`, `user_details`, `totalposts`, `password`) VALUES
+(1, 'ArshadRazvi', 'Principal', '2023-04-06 09:27:51', 'Principal, Bill Gates Institute of Computer Science and Management, Dharashiv.', 2, '$2y$10$lQUonthk8nIPSDA.j0UKwOh0SkAXWblGwsxzx1bl.MxNagqZdBcFm'),
+(2, 'DNJamale', 'Faculty', '2023-04-05 07:32:30', 'Senior Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$WndjGISPrJOXztxXY3E/R.hH/wTYpXtyzbXSaVvKNRR4MrZcdA5k6'),
+(3, 'IsmailHannure', 'Faculty', '2023-04-05 08:29:03', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$bjvCpcIf066E0tQZVfxoWeF8LZJ.MYgz5udGIZ.meymP0e2QLGvs2'),
+(4, 'AartiDeshmukh', 'Faculty', '2023-04-06 10:04:50', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$wW2Q0fWAMfCiCQkN0aJtGOgNPLSJFp5GdL7ju41Sdbt7pCDeZOnk6'),
+(5, 'ShrutiMadake', 'Faculty', '2023-04-05 08:34:51', 'Lecturer, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$tny4eUT8lNXjOGk2asZ2ku0fHRzb0KYz.YZ.uyctvRmwooXfPWJd6'),
+(6, 'Office', 'Office', '2023-04-06 10:34:56', 'Official account of Office, Bill Gates Institute of Computer Science and Management.', 0, '$2y$10$FzPOaOrZckivH9CtU.J.1eQND3DafH8.cEU112i/98MYfMDN8Hsvm'),
+(7, 'YashGaikwad', 'Student', '2023-04-06 09:04:44', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$Awyi5OJmwnj7/BG7sGMX5.Mx9bSBLZ0ku845NcuoOCVVU4rv8u81O'),
+(8, 'AniketGurav', 'Student', '2023-04-06 09:05:50', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$2RC32LeIAF2JpiDfPDrQVuM8Q1E7HbDyPmeOLEkIXhbjbWNd7GnYq'),
+(9, 'AvirajPatil', 'Student', '2023-04-06 09:07:20', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$ptBHTH6JWtUTnu4To0q7xe2zKsyGLiojgCL/1xPcJaxl1ExCXcfli'),
+(10, 'SaurabhShitole', 'Student', '2023-04-05 08:35:40', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$6Rmh36u9ki0b5vSrq4n.9ujOtXc55cxUdbohVEdTpNWhwz6k58xGq'),
+(11, 'IrfanKazi', 'Student', '2023-04-07 09:04:54', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$/FC7BFK3SIwgfeOcv2l/uO18CjzjZKPkDPfgnF2BXYwM62mOTKUey'),
+(12, 'AbhijitGawali', 'Student', '2023-04-07 09:39:55', 'Student, Bill Gates Institute of Computer Science and Management, Dharashiv.', 0, '$2y$10$DM0E08FPDBPcOqNvcCvNfeFraJTYfbSIlc/L.NeS.lJj4LXWCzp7C');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `descriptions`
@@ -150,12 +131,6 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `descriptions`
 --
 ALTER TABLE `descriptions`
@@ -165,13 +140,13 @@ ALTER TABLE `descriptions`
 -- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
