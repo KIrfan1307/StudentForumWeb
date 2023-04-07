@@ -31,6 +31,7 @@ $runUS=mysqli_query($db,$userstmt);
                     <li class="nav-item"><a href="forums.php">Forums</a></li>
                     <li class="nav-item"><a href="posts.php">Posts</a></li>
                     <li class="nav-item"><a href="detail.php">Detail</a></li>
+                    <li class="nav-item"><a href="Admin_panel/login.php">Login</a></li>
                 </ul>
             </nav>
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>

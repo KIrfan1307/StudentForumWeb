@@ -10,13 +10,13 @@
         <a class="nav-link" href="../forums.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/loginsystem/login.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/loginsystem/signup.php">Signup</a>
+        <a class="nav-link" href="register.php">Signup</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/loginsystem/logout.php">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
   </div>

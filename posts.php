@@ -1,5 +1,13 @@
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("location: Admin_panel/login.php");
+
+    exit;
+}
     require('db.php');
+    
     $forumQuery="SELECT * FROM forum";
     $runFQ=mysqli_query($db,$forumQuery);
 ?>
@@ -27,6 +35,7 @@
                     <li class="nav-item"><a href="forums.php">Forums</a></li>
                     <li class="nav-item"><a href="posts.php">Posts</a></li>
                     <li class="nav-item"><a href="detail.php">Detail</a></li>
+                    <li class="nav-item"><a href="Admin_panel/login.php">Login</a></li>
                 </ul>
             </nav>
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
@@ -69,17 +78,14 @@
                 </div>
             </div>
             <?php } ?>
-            <div class="chat-box mb-3">
-                <input type="text" class="" placeholder="add your message">
-                <button class="" type="button" id="button-addon2">Button</button>
-            </div>
-
-        <!--Pagination-->
-                <div class="pagination">
-                    pages: <a href="#">1</a><a href="#">2</a><a href="#">3</a>
-
-                </div>
-
+            <form action="chatform.php" method="post">
+            
+                
+                <textarea class="" style="width:100%; height:30%; font-size:20px; " placeholder="add your message"></textarea>
+                <button class="fa-send" type="submit" id="button-addon2">Button</button>
+                
+            
+            </form>
                 <!--Status Note-->
         <footer>
             <span>&copy; &nbsp;Irfan Kazi | All rights Reserved.</span>
