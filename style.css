@@ -68,7 +68,10 @@ h1{
 .subforum-icon i{
     font-size: 45px;
 }
-
+#button-addon2, #button-addon3{
+   width: 30px;
+   height: 30px;
+}
 /* For the smartphones */
 @media screen and (max-width: 460px) {
     .container{

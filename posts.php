@@ -81,8 +81,10 @@ if(!isset($_SESSION['username']))
             <form action="chatform.php" method="post">
             
                 
-                <textarea class="" style="width:100%; height:30%; font-size:20px; " placeholder="add your message"></textarea>
-                <button class="fa-send" type="submit" id="button-addon2">Button</button>
+                <textarea class="" style="width:100%; height:30%; font-size:20px; " placeholder="add your message" name="forumcontent"></textarea>
+                
+                <button type="submit"><i class="fas fa-pen"  id="button-addon2"></i></button>
+                <button type="reset" ><i  class="fas fa-eraser" id="button-addon3"></i></button>
                 
             
             </form>
