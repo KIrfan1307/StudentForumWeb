@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 04:05 PM
+-- Generation Time: Apr 18, 2023 at 10:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,7 +45,8 @@ INSERT INTO `descriptions` (`id`, `description_title`, `description_content`, `a
 (2, 'Exams Apr/May 2022', 'Due to schedule related issues, this semester\'s University Assessments may prepone up to 10 days. So exams may start on to 21st of March, 2023.', 1, 'Reminder', '2023-02-22 09:51:11'),
 (3, 'Second Term (UA) Examination Form', 'We would like to inform students studying in B.Sc.(CS) 1, 2, 3, 4, 5 & 6th semester that Second Term Examination Forms are released to fill up till 28th February, 2023.', 6, 'Circular', '2023-02-22 10:12:35'),
 (4, 'Microsoft AI', 'Join the age AI with Microsoft :\n\"Microsoft is committed to making the promise of AI real with advancements grounded in our mission to help every person on the planet to achieve more.\"\n- Satya Nadela, CEO Microsoft.', 2, 'Information', '2023-02-22 10:52:33'),
-(5, 'Project submission team', 'Project Submission Team\r\n1. Mrs.Aarti Deshmukh.\r\n2. Mr. Ismail Hannure.\r\n This is the project submission team and will guide you throughout the whole project submission process.', 3, 'Announcement', '2023-03-08 15:29:52');
+(5, 'Project submission team', 'Project Submission Team\r\n1. Mrs.Aarti Deshmukh.\r\n2. Mr. Ismail Hannure.\r\n This is the project submission team and will guide you throughout the whole project submission process.', 3, 'Announcement', '2023-03-08 15:29:52'),
+(6, 'Practical Exams', 'Practical exams will be held in April. All students will be notified soon.', 0, '1', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,11 @@ INSERT INTO `forum` (`id`, `forum_content`, `author`, `created_at`) VALUES
 (1, 'Is learning Python on 2023 worth it?', 'YashGaikwad', '2023-04-06 09:33:24'),
 (2, 'Yes, python is getting too much highlight, and popularity since last few years because of its programmer friendly behavior.\r\nYou can make your career in python.\r\nData science is effective field of python\'s demand.', 'IsmailHannure', '2023-04-06 09:33:29'),
 (3, 'Is there any must learn course for Computer Science students?', 'AniketGurav', '2023-04-06 09:33:34'),
-(4, 'It is up to your choice.\r\nBrowse related courses you want to make career in.', 'AartiDeshmukh', '2023-04-06 09:33:38');
+(4, 'It is up to your choice.\r\nBrowse related courses you want to make career in.', 'AartiDeshmukh', '2023-04-06 09:33:38'),
+(5, 'So many rumors are there about some programming languages about their popularity. May I know how to deal with that?', 'AbhijitGawali', '2023-04-16 08:47:21'),
+(6, 'You can learn any Programming language to jump in the IT. Programming language is not important but frameworks are important to be understood. If you learn how programming languages are used to solve the problems then it is easy to survive in the IT.', 'AartiDeshmukh', '2023-04-16 08:52:31'),
+(7, 'Is HTML programming language?', 'IrfanKazi', '2023-04-16 09:02:24'),
+(8, 'No, HTML is not a programming language. It is a markup language used to set up things on display and arrange stuff to be displayed on the screen the browser using.', 'DNJamale', '2023-04-16 09:19:18');
 
 -- --------------------------------------------------------
 
@@ -134,13 +139,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `descriptions`
 --
 ALTER TABLE `descriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`

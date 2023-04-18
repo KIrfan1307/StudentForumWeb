@@ -19,26 +19,50 @@ $sessionusername=$_SESSION['username'];
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../all.css">
     <script type="text/javascript" src="../all.js"></script>
-    <title>SignUp</title>
+    <title>Dashboard</title>
   </head>
   <body>
+    
   <?php
     require("Navbar.php");
-    echo "This is Dashboard ";?><br><?php
-    echo "Hi ".$_SESSION['username'];
-   ?>
-   <h2>+Forum<a id="dropButton"><i class="fa fa-sort-desc"></i></a></h2>
+    ?><br><h1><?="Hi ".$_SESSION['username']?></h1>
+   <!-- <h2>Add Forum<a id="dropButton"><i class="fa fa-sort-desc"></i></a></h2> -->
    <center>
-  <div class="form-a" id="addblog" style="display:none;">
+   <h1>Add an announcement here </h1>
+  <div class="form-a" id="addblog" >
       <form action="addforumresult.php?sessionusername=<?=$sessionusername?>" method="post" name="addblogform" id="addblogform" enctype="multipart/form-data">
-        <label for="blog-title">Enter title</label><br>
-        <textarea  id="blog-title" name="blog-title" cols="100" autocomplete="off"></textarea><br>
-        <label for="blog-type">Type</label>
-        <label for="blog-content">Content</label><br>
-        <textarea  id="blog-content" name="blog-content" cols="100" rows="30" autocomplete="off"></textarea><br>
-        <input type="submit" name="submit" id="submit">
+      <table>
+        <tr>
+          <td><label for="blog-title">Enter title</label></td>
+          <td><p>  &nbsp &nbsp &nbsp </p></td>
+          <td><textarea  id="blog-title" name="blog-title" cols="100" autocomplete="off"></textarea></td>
+        </tr>
+        <tr>
+          <td><label for="blog-type">Type of content</label></td>
+          <td><p> &nbsp &nbsp &nbsp</p></td>
+          <td><select name="blog-type" id="blog-type">
+          <option value="select">----select----</option>
+          <option value="Notice">Notice</option>
+          <option value="Announcement">Announcement</option>
+          <option value="Reminder">Reminder</option>
+          <option value="Circular">Circular</option>
+          <option value="Information">Information</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td><label for="blog-content">Content</label></td>
+          <td><p> &nbsp &nbsp &nbsp</p></td>
+          <td><textarea  id="blog-content" name="blog-content" cols="100" rows="20" autocomplete="off"></textarea></td>
+        </tr>
+
+      </table>
+      
+        
+       
+        
+        
         <br>
-        <h1><a id="upButton"><i class="fa fa-sort-asc"></i></a></h1>
+        <input type="submit" name="submit" id="submit">
       </form>
       </div>
       <script type="text/javascript">
