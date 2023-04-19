@@ -53,18 +53,6 @@
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
             <div class="brand">Student Forum</div>
         </div>
-        <!--SearchBox Section-->
-        <div class="search-box">
-            <div>
-                <select name="" id="">
-                    <option value="Everything">Everything</option>
-                    <option value="Titles">Titles</option>
-                    <option value="Descriptions">Descriptions</option>
-                </select>
-                <input type="text" name="q" placeholder="search ...">
-                <button><i class="fa fa-search"></i></button>
-            </div>
-        </div>
     </header>
     <div class="container">
         <div class="subforum">
@@ -88,7 +76,7 @@
                     </div>
                     
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a> 
+                        <b><a href=""><?=$post['description_type']?> &nbsp </a></b>&nbsp  by &nbsp<a href="searchresult.php?q=<?=$post3['username']?>"><?=$post3['username']?></a> 
                         <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                     </div>
                 </div>
@@ -120,7 +108,7 @@
                 </div>
                 
                 <div class="subforum-info subforum-column">
-                <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a>
+                <b><a href=""><?=$post['description_type']?> &nbsp </a></b>&nbsp  by &nbsp<a href="searchresult.php?q=<?=$post3['username']?>"><?=$post3['username']?></a>
                     <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                 </div>
             </div>
@@ -150,7 +138,7 @@
                     </div>
                     
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post &nbsp </a></b>&nbsp  by &nbsp<a href=""><?=$post3['username']?></a>
+                        <b><a href=""><?=$post['description_type']?> &nbsp </a></b>&nbsp  by &nbsp<a href="searchresult.php?q=<?=$post3['username']?>"><?=$post3['username']?></a>
                         <br>on <small><?=date('F jS, Y',strtotime($post['created_at']))?></small>
                     </div>
                 </div>
@@ -166,9 +154,7 @@
         <div class="chart">
             StudentForum - Stats &nbsp;<i class="fa fa-bar-chart"></i>
         </div>
-        <span><u><?=$postCount['Count(*)']?></u> Posts by <u><?=$var?></u> Members.</span><br>
-        <span>Latest post: <b><a href="">Random post</a></b> on Dec 15 2021 By <a href="">RandomUser</a></span>.<br>
-        <span>Check <a href="">the latest posts</a> .</span><br>
+        <span>Total posts <u><?=$postCount['Count(*)']?></u>.</span><br>
     </div>
 
     <footer>

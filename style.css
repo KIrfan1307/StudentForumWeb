@@ -72,6 +72,36 @@ h1{
    width: 30px;
    height: 30px;
 }
+#posts-table{
+    align-items: center;
+    text-align: center;
+    justify-content:center ; 
+    display: flex;
+    border-collapse: collapse;
+    margin: 2.5px 0;
+    min-width: 400px;
+}
+#posts-h1{
+    padding:10px 50px;
+}
+#posts-h2{
+    padding:10px 400px;
+}
+#posts-h3{
+    padding:10px 40px;
+}
+#posts-h1, #posts-h2, #posts-h3{
+    background-color: rgb(20, 8, 36);
+    color: #6f8607;
+    text-align: center;
+    font-size: large;
+   
+}
+
+#posts-table, #posts-h1, #posts-h2, #posts-h3, #posts-d1, #posts-d2, #posts-d3{
+    border: 1px solid;
+}
+
 /* For the smartphones */
 @media screen and (max-width: 460px) {
     .container{
@@ -322,12 +352,13 @@ footer{
 
 .table-row .status{
     flex: 5%;
-    font-size: 30px;
+    font-size: medium;
     text-align: center;
 }
 
 .table-row .subjects{
     flex: 70%;
+    font-size: medium;
 }
 
 /* .table-row .replies{

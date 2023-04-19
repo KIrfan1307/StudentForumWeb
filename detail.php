@@ -40,13 +40,10 @@ $runUS=mysqli_query($db,$userstmt);
         <!--SearchBox Section-->
         <div class="search-box">
             <div>
-                <select name="" id="">
-                    <option value="Everything">Everything</option>
-                    <option value="Titles">Titles</option>
-                    <option value="Descriptions">Descriptions</option>
-                </select>
+                <form action="searchresult.php" method="get">
                 <input type="text" name="q" placeholder="search ...">
-                <button><i class="fa fa-search"></i></button>
+                <button type="submit" name="search-submit" id="search-submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
         </div>
     <div class="container">
@@ -69,8 +66,7 @@ $runUS=mysqli_query($db,$userstmt);
                     
                         <div class="username"><a href=""><?=$post['username']?></a></div>
                         <div><?=$post['usertype']?></div>
-                        <div>Posts: <u><?=$post1['count(*)']?></u></div>
-                        <div>Points: <u>4586</u></div>
+                        <div>Posts created : <u><?=$post1['count(*)']?></u></div>
                 </div>
                 <div class="content">
                     <?=$post['user_details']?>

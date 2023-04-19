@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2023 at 10:05 AM
+-- Generation Time: Apr 19, 2023 at 12:08 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,7 +46,8 @@ INSERT INTO `descriptions` (`id`, `description_title`, `description_content`, `a
 (3, 'Second Term (UA) Examination Form', 'We would like to inform students studying in B.Sc.(CS) 1, 2, 3, 4, 5 & 6th semester that Second Term Examination Forms are released to fill up till 28th February, 2023.', 6, 'Circular', '2023-02-22 10:12:35'),
 (4, 'Microsoft AI', 'Join the age AI with Microsoft :\n\"Microsoft is committed to making the promise of AI real with advancements grounded in our mission to help every person on the planet to achieve more.\"\n- Satya Nadela, CEO Microsoft.', 2, 'Information', '2023-02-22 10:52:33'),
 (5, 'Project submission team', 'Project Submission Team\r\n1. Mrs.Aarti Deshmukh.\r\n2. Mr. Ismail Hannure.\r\n This is the project submission team and will guide you throughout the whole project submission process.', 3, 'Announcement', '2023-03-08 15:29:52'),
-(6, 'Practical Exams', 'Practical exams will be held in April. All students will be notified soon.', 0, '1', '0000-00-00 00:00:00');
+(6, 'Practical Exams', 'Practical exams will be held in April. All students will be notified soon.', 4, 'Information', '2023-04-17 12:09:04'),
+(7, 'ABC card details submission.', 'All the students studying in B.Sc. (CS), BCA, and BBA are informed to validate their Academic Bank of Credits and submit the ACB card copy in the office till 22nd April 2023.', 6, 'Information', '2023-04-19 03:58:16');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,11 @@ INSERT INTO `forum` (`id`, `forum_content`, `author`, `created_at`) VALUES
 (5, 'So many rumors are there about some programming languages about their popularity. May I know how to deal with that?', 'AbhijitGawali', '2023-04-16 08:47:21'),
 (6, 'You can learn any Programming language to jump in the IT. Programming language is not important but frameworks are important to be understood. If you learn how programming languages are used to solve the problems then it is easy to survive in the IT.', 'AartiDeshmukh', '2023-04-16 08:52:31'),
 (7, 'Is HTML programming language?', 'IrfanKazi', '2023-04-16 09:02:24'),
-(8, 'No, HTML is not a programming language. It is a markup language used to set up things on display and arrange stuff to be displayed on the screen the browser using.', 'DNJamale', '2023-04-16 09:19:18');
+(8, 'No, HTML is not a programming language. It is a markup language used to set up things on display and arrange stuff to be displayed on the screen the browser using.', 'DNJamale', '2023-04-16 09:19:18'),
+(9, 'I have an idea about a software project. Is anyone interested to join me as co-developer?', 'AniketGurav', '2023-04-19 04:08:16'),
+(10, 'I am Interested if it is a web project.', 'IrfanKazi', '2023-04-19 04:09:57'),
+(11, 'What are prerequisites for the project?', 'AvirajPatil', '2023-04-19 07:20:21'),
+(12, 'Yes, project is web based. You just need a PC with XAMPP installed in it and basic knowledge of web development. Let me know if you are interested.', 'AniketGurav', '2023-04-19 07:24:55');
 
 -- --------------------------------------------------------
 
@@ -139,13 +144,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `descriptions`
 --
 ALTER TABLE `descriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`

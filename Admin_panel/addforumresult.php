@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
       $BLOGCONTENT=$_REQUEST['blog-content'];
     }
     $BLOGTYPE=$_REQUEST['blog-type'];
-    $blogQuery="INSERT INTO descriptions VALUES(NULL,'$BLOGTITLE','$BLOGCONTENT','$BLOGTYPE','$sessionuserid', 'current_timestamp()')";
+    $blogQuery="INSERT INTO descriptions VALUES(NULL,'$BLOGTITLE','$BLOGCONTENT','$sessionuserid','$BLOGTYPE', NULL)";
     if($BLOGCONTENT != "" && $BLOGTITLE != "" && $BLOGTYPE !="select") {
       $runbq=mysqli_query($db,$blogQuery);
     }
@@ -24,4 +24,5 @@ if(isset($_POST['submit'])){
 
 
 }
+header("location: Dashboard.php");
 ?>

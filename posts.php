@@ -41,18 +41,6 @@ if(!isset($_SESSION['username']))
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
             <div class="brand">Student Forum</div>
         </div>
-        <!--SearchBox Section-->
-        <div class="search-box">
-            <div>
-                <select name="" id="">
-                    <option value="Everything">Everything</option>
-                    <option value="Titles">Titles</option>
-                    <option value="Descriptions">Descriptions</option>
-                </select>
-                <input type="text" name="q" placeholder="search ...">
-                <button><i class="fa fa-search"></i></button>
-            </div>
-        </div>
     </header>
     <div class="container">
 
@@ -69,12 +57,11 @@ if(!isset($_SESSION['username']))
                 ?>
             <div class="table-row">
                 <div class="subjects">
-                    <a href=""><?=$post['forum_content']?></a>
-                    <br>
+                    <p><?=$post['forum_content']?></p>
                 </div>
                 <div class="last-reply">
                 <?=$post['created_at']?>
-                    <br>By <b><a href=""><?=$post['author']?></a></b>
+                    <br>By <b><a href="searchresult.php?q=<?=$post['author']?>"><?=$post['author']?></a></b>
                 </div>
             </div>
             <?php } ?>

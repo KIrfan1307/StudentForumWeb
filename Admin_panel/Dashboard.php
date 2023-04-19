@@ -1,4 +1,5 @@
 <?php
+include("../db.php");
 session_start();
 if(!isset($_SESSION['username']))
 {
@@ -6,6 +7,12 @@ if(!isset($_SESSION['username']))
     exit;
 }
 $sessionusername=$_SESSION['username'];
+$ids="SELECT id FROM user WHERE username ='$sessionusername'";
+$runIDS=mysqli_query($db,$ids);
+$post=mysqli_fetch_assoc($runIDS);
+$sessionuserid=$post['id'];
+$SUDs="SELECT * FROM descriptions WHERE author='$sessionuserid'";
+$runSuds=mysqli_query($db,$SUDs);
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,16 +63,13 @@ $sessionusername=$_SESSION['username'];
         </tr>
 
       </table>
-      
-        
-       
-        
-        
         <br>
         <input type="submit" name="submit" id="submit">
+        <input type="reset" name="reset" id="reset">
       </form>
       </div>
-      <script type="text/javascript">
+    </center>
+      <!-- <script type="text/javascript">
         document.getElementById("dropButton").onclick = function() {
             document.getElementById("addblog").style.display="block";
             document.getElementById("dropButton").style.display = "none";    
@@ -74,7 +78,35 @@ $sessionusername=$_SESSION['username'];
             document.getElementById("addblog").style.display = "none";
             document.getElementById("dropButton").style.display = "block";
         }
-        </script>
-</center>
+        </script> -->
+        <br><br><br><br>
+        <table id="posts-table" name="posts-table">
+          <tr>
+            <th id="posts-h1" name="posts-h1">
+              Date
+            </th>
+            <th id="posts-h2" name="posts-h2">
+              Posts created by you
+            </th>
+            <th id="posts-h3" name="posts-h3">
+            <i class="fa fa-trash"></i>
+            </th>
+          </tr>
+          <?php
+          while($post1=mysqli_fetch_assoc($runSuds)){ ?>
+          <tr>
+            <td id="posts-d1">
+              <?=$post1['created_at']?>
+            </td>
+            <td id="posts-d2">
+              <b><?=$post1['description_title']?></b><br>
+              <?=$post1['description_content']?>
+            </td>
+            <td id="posts-d2">
+              <a href="deletepost.php?postid='<?=$post1['id']?>'"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+            <?php } ?>
+        </table>
   </body>
 </html>
